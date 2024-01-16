@@ -37,7 +37,7 @@ class Lexer:
         try:
             line = self.reader.readline()
         except Exception as e:
-            raise ParseException(str(e))
+            raise ParseException('parse exception at line: {}'.format(line))
 
         if not line:
             self.hasMore = False
