@@ -13,12 +13,16 @@ class Lexer:
         self.hasMore = True
         self.reader = reader
 
+    # 从队列中取出一个Token，如果队列为空，
+    # 则调用readline()方法读取一行并解析
     def read(self):
         if self.fill_queue(0):
             return self.queue.pop(0)
         else:
             return Token.EOF
 
+    # 从队列中读取第i个Token（并不取出），如果队列中没有第i个Token
+    # 则调用fill_queue()方法读取一行并解析
     def peek(self, i):
         if self.fill_queue(i):
             return self.queue[i]
